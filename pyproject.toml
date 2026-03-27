@@ -18,6 +18,7 @@ dependencies = [
 
 [project.scripts]
 adult-income-eda = "app.data.eda.generate_report:main"
+adult-income-train = "app.train:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
