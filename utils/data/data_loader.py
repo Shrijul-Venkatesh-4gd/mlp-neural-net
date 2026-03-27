@@ -5,6 +5,8 @@ from dataclasses import dataclass
 import pandas as pd
 from ucimlrepo import fetch_ucirepo
 
+from utils.data.preprocessing import PreparedAdultData, prepare_adult_mlp_data
+
 ADULT_DATASET_ID = 2
 
 
@@ -47,4 +49,22 @@ def load_adult_dataset() -> AdultDataset:
         variables=dataset.variables.copy(),
         features=dataset.data.features.copy(),
         target=target,
+    )
+
+
+def load_preprocessed_adult_data(
+    *,
+    test_size: float = 0.2,
+    val_size: float = 0.1,
+    random_state: int = 42,
+) -> PreparedAdultData:
+    dataset = load_adult_dataset()
+    normalized_target = normalize_income_labels(dataset.target)
+
+    return prepare_adult_mlp_data(
+        dataset.features,
+        normalized_target,
+        test_size=test_size,
+        val_size=val_size,
+        random_state=random_state,
     )
