@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from utils.data.data_loader import AdultDataset
+from app.data.data_loader import AdultDataset
 
 
 def _code_block(text: str) -> str:
@@ -220,7 +220,7 @@ def build_eda_report() -> str:
     return "\n\n".join(section.rstrip() for section in sections).strip() + "\n"
 
 
-def write_eda_report(output_path: str = "docs/eda_report.md") -> Path:
+def write_eda_report(output_path: str = "docs/data/eda_report.md") -> Path:
     report = build_eda_report()
     destination = Path(output_path)
     destination.parent.mkdir(parents=True, exist_ok=True)
@@ -232,7 +232,7 @@ def main() -> None:
     parser = ArgumentParser(description="Generate a markdown EDA report for the Adult dataset.")
     parser.add_argument(
         "--output",
-        default="docs/eda_report.md",
+        default="docs/data/eda_report.md",
         help="Where to write the markdown report.",
     )
     args = parser.parse_args()

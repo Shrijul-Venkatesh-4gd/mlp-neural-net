@@ -233,3 +233,4 @@ def prepare_adult_mlp_data(
         raw_test=X_test.reset_index(drop=True),
         snapshot=snapshot,
     )
+

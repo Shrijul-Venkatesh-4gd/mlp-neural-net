@@ -5,7 +5,7 @@ from dataclasses import dataclass
 import pandas as pd
 from ucimlrepo import fetch_ucirepo
 
-from utils.data.preprocessing import (
+from app.data.preprocessing import (
     PreparedAdultData,
     clean_adult_dataframe,
     normalize_income_labels,
@@ -97,3 +97,4 @@ def load_preprocessed_adult_data(
         val_size=val_size,
         random_state=random_state,
     )
+
