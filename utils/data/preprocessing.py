@@ -45,12 +45,13 @@ class PreparedAdultData:
     raw_train: pd.DataFrame
     raw_val: pd.DataFrame
     raw_test: pd.DataFrame
+    snapshot: pd.DataFrame
 
 
 def _replace_missing_like_values(frame: pd.DataFrame) -> pd.DataFrame:
     cleaned = frame.copy()
     for column in MISSING_LIKE_COLUMNS:
-        cleaned[column] = cleaned[column].replace("?", pd.NA)
+        cleaned[column] = cleaned[column].replace("?", np.nan)
     return cleaned
 
 
@@ -59,6 +60,12 @@ def _log1p_capital_features(frame: pd.DataFrame) -> pd.DataFrame:
     for column in ["capital-gain", "capital-loss"]:
         transformed[column] = np.log1p(transformed[column])
     return transformed
+
+
+def _preserve_feature_names(
+    transformer: FunctionTransformer, input_features: list[str] | np.ndarray
+) -> list[str] | np.ndarray:
+    return input_features
 
 
 def clean_adult_dataframe(frame: pd.DataFrame) -> pd.DataFrame:
@@ -84,7 +91,14 @@ def build_mlp_preprocessor() -> ColumnTransformer:
     )
     numeric_pipeline = Pipeline(
         steps=[
-            ("log_capital", FunctionTransformer(_log1p_capital_features, validate=False)),
+            (
+                "log_capital",
+                FunctionTransformer(
+                    _log1p_capital_features,
+                    validate=False,
+                    feature_names_out=_preserve_feature_names,
+                ),
+            ),
             ("scaler", StandardScaler()),
         ]
     )
@@ -112,6 +126,34 @@ def compute_class_weights(y: np.ndarray) -> dict[int, float]:
         int(class_label): float(total / (n_classes * count))
         for class_label, count in zip(classes, counts, strict=True)
     }
+
+
+def build_preprocessed_snapshot(
+    *,
+    X_train: np.ndarray,
+    X_val: np.ndarray,
+    X_test: np.ndarray,
+    y_train: np.ndarray,
+    y_val: np.ndarray,
+    y_test: np.ndarray,
+    feature_names: list[str],
+    sample_size: int = 50,
+    random_state: int = 42,
+) -> pd.DataFrame:
+    split_frames = []
+    for split_name, X_split, y_split in [
+        ("train", X_train, y_train),
+        ("val", X_val, y_val),
+        ("test", X_test, y_test),
+    ]:
+        split_frame = pd.DataFrame(X_split, columns=feature_names)
+        split_frame["target"] = y_split.astype(int)
+        split_frame["split"] = split_name
+        split_frames.append(split_frame)
+
+    combined = pd.concat(split_frames, ignore_index=True)
+    n_rows = min(sample_size, len(combined))
+    return combined.sample(n=n_rows, random_state=random_state).reset_index(drop=True)
 
 
 def prepare_adult_mlp_data(
@@ -155,6 +197,17 @@ def prepare_adult_mlp_data(
     X_test_processed = preprocessor.transform(X_test)
     feature_names = preprocessor.get_feature_names_out().tolist()
     class_weights = compute_class_weights(y_train.to_numpy())
+    snapshot = build_preprocessed_snapshot(
+        X_train=np.asarray(X_train_processed, dtype=np.float32),
+        X_val=np.asarray(X_val_processed, dtype=np.float32),
+        X_test=np.asarray(X_test_processed, dtype=np.float32),
+        y_train=y_train.to_numpy(dtype=np.float32),
+        y_val=y_val.to_numpy(dtype=np.float32),
+        y_test=y_test.to_numpy(dtype=np.float32),
+        feature_names=feature_names,
+        sample_size=50,
+        random_state=random_state,
+    )
 
     return PreparedAdultData(
         X_train=np.asarray(X_train_processed, dtype=np.float32),
@@ -169,4 +222,5 @@ def prepare_adult_mlp_data(
         raw_train=X_train.reset_index(drop=True),
         raw_val=X_val.reset_index(drop=True),
         raw_test=X_test.reset_index(drop=True),
+        snapshot=snapshot,
     )
