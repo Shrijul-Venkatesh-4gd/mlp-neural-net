@@ -13,7 +13,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from app.config import ModelConfig, OptimizerConfig, TrainingConfig
 from app.data import load_preprocessed_adult_data
 from app.model import AdultIncomeMLP
-from app.training.artifacts import initialize_run_artifacts, update_leaderboard, write_json
+from app.training import initialize_run_artifacts, update_leaderboard, write_json
 
 
 def get_device() -> torch.device:
