@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from utils.data.data_loader import load_adult_dataset, normalize_income_labels
+from utils.data.data_loader import AdultDataset
 
 
 def _code_block(text: str) -> str:
@@ -35,12 +35,10 @@ def _rate_table(df: pd.DataFrame, column: str, top_n: int = 8) -> pd.DataFrame:
 
 
 def build_eda_report() -> str:
-    dataset = load_adult_dataset()
-    features = dataset.features
-    target = normalize_income_labels(dataset.target)
-
-    df = features.copy()
-    df["income"] = target
+    dataset = AdultDataset.load()
+    features = dataset.get_features()
+    target = dataset.get_target(normalized=True)
+    df = dataset.to_frame(normalized_target=True)
 
     question_marks = {
         column: int(features[column].eq("?").sum())
@@ -69,7 +67,15 @@ def build_eda_report() -> str:
     )
 
     target_numeric_means = (
-        df.groupby("income")[["age", "education-num", "capital-gain", "capital-loss", "hours-per-week"]]
+        df.groupby("income")[
+            [
+                "age",
+                "education-num",
+                "capital-gain",
+                "capital-loss",
+                "hours-per-week",
+            ]
+        ]
         .mean()
         .round(2)
     )
