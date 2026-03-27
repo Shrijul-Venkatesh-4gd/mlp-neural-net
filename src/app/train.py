@@ -240,4 +240,3 @@ def run_training_pipeline(config: TrainingConfig) -> dict[str, float]:
     print(f"recall:    {test_metrics['recall']:.4f}")
     print(f"f1:        {test_metrics['f1']:.4f}")
     return test_metrics
-

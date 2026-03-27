@@ -10,7 +10,12 @@ SRC_DIR = PROJECT_ROOT / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
-from app.cli import main
+from app.config import TrainingConfig
+from app.train import run_training_pipeline
+
+
+def main() -> None:
+    run_training_pipeline(TrainingConfig())
 
 
 if __name__ == "__main__":

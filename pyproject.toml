@@ -17,7 +17,6 @@ dependencies = [
 ]
 
 [project.scripts]
-adult-income-train = "app.cli:main"
 adult-income-eda = "app.data.eda.generate_report:main"
 
 [tool.setuptools]
