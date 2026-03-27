@@ -29,6 +29,10 @@ NUMERIC_COLUMNS = [
     "hours-per-week",
 ]
 DROP_COLUMNS = ["education", "fnlwgt"]
+INCOME_LABEL_NORMALIZATION = {
+    "<=50K.": "<=50K",
+    ">50K.": ">50K",
+}
 
 
 @dataclass(frozen=True)
@@ -46,6 +50,11 @@ class PreparedAdultData:
     raw_val: pd.DataFrame
     raw_test: pd.DataFrame
     snapshot: pd.DataFrame
+
+
+def normalize_income_labels(target: pd.Series) -> pd.Series:
+    normalized = target.replace(INCOME_LABEL_NORMALIZATION)
+    return normalized.rename(target.name or "income")
 
 
 def _replace_missing_like_values(frame: pd.DataFrame) -> pd.DataFrame:
