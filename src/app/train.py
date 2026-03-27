@@ -205,6 +205,7 @@ def run_training_pipeline(config: TrainingConfig) -> dict[str, float]:
         input_dim=input_dim,
         hidden_dim_1=config.hidden_dim_1,
         hidden_dim_2=config.hidden_dim_2,
+        hidden_dim_3=config.hidden_dim_3,
         dropout=config.dropout,
     ).to(device)
 

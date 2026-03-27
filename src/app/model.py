@@ -8,8 +8,9 @@ class AdultIncomeMLP(nn.Module):
     def __init__(
         self,
         input_dim: int,
-        hidden_dim_1: int = 128,
-        hidden_dim_2: int = 64,
+        hidden_dim_1: int = 256,
+        hidden_dim_2: int = 128,
+        hidden_dim_3: int = 64,
         dropout: float = 0.2,
     ) -> None:
         super().__init__()
@@ -22,9 +23,12 @@ class AdultIncomeMLP(nn.Module):
             nn.ReLU(),
             nn.BatchNorm1d(hidden_dim_2),
             nn.Dropout(dropout),
-            nn.Linear(hidden_dim_2, 1),
+            nn.Linear(hidden_dim_2, hidden_dim_3),
+            nn.ReLU(),
+            nn.BatchNorm1d(hidden_dim_3),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_dim_3, 1),
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         return self.network(x).squeeze(1)
-
