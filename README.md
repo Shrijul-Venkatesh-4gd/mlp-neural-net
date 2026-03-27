@@ -1,20 +1,51 @@
 # mlp-neural-net
-dataset : https://archive.ics.uci.edu/dataset/2/adult
 
-dataset installation steps 
-pip install ucimlrepo
+PyTorch MLP baseline for the UCI Adult Income dataset:
+https://archive.ics.uci.edu/dataset/2/adult
 
-from ucimlrepo import fetch_ucirepo 
-  
-# fetch dataset 
-adult = fetch_ucirepo(id=2) 
-  
-# data (as pandas dataframes) 
-X = adult.data.features 
-y = adult.data.targets 
-  
-# metadata 
-print(adult.metadata) 
-  
-# variable information 
-print(adult.variables) 
+## Project layout
+
+```text
+src/app/
+  cli.py
+  config.py
+  model.py
+  training.py
+  data/
+    data_loader.py
+    preprocessing.py
+    eda/
+      generate_report.py
+main.py
+docs/
+```
+
+## Run training
+
+Use the thin root entrypoint:
+
+```bash
+.venv/bin/python main.py
+```
+
+Or run the package directly:
+
+```bash
+PYTHONPATH=src .venv/bin/python -m app.cli
+```
+
+If you are using `uv`, the script entrypoint is:
+
+```bash
+uv run adult-income-train
+```
+
+## Generate the EDA report
+
+```bash
+PYTHONPATH=src .venv/bin/python -m app.data.eda.generate_report
+```
+
+## Dataset access
+
+The dataset loader uses `ucimlrepo` and fetches dataset id `2`.

@@ -4,7 +4,7 @@
 
 This document explains what preprocessing was applied to the Adult dataset before training the MLP, and why each step was used.
 
-The implementation for these steps lives in [utils/data/preprocessing.py](/home/shrijul/Desktop/mlp-neural-net/utils/data/preprocessing.py).
+The implementation for these steps lives in [src/app/data/preprocessing.py](/home/shrijul/Desktop/mlp-neural-net/src/app/data/preprocessing.py).
 
 ## Pipeline Summary
 
