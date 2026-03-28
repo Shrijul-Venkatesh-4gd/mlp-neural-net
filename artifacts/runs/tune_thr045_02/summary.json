@@ -1,0 +1,60 @@
+{
+  "best_epoch": 4,
+  "best_train_metrics": {
+    "accuracy": 0.789564606330337,
+    "f1": 0.6708194018229285,
+    "fn": 854.0,
+    "fp": 6333.0,
+    "loss": 0.5706401710572663,
+    "precision": 0.5362478031634447,
+    "recall": 0.8955607190901309,
+    "tn": 19643.0,
+    "tp": 7323.0
+  },
+  "best_val_metrics": {
+    "accuracy": 0.7847919655667145,
+    "f1": 0.6636771300448431,
+    "fn": 132.0,
+    "fp": 918.0,
+    "loss": 0.5751234500421366,
+    "precision": 0.5301944728761515,
+    "recall": 0.886986301369863,
+    "tn": 2793.0,
+    "tp": 1036.0
+  },
+  "config": {
+    "artifact_root": "artifacts",
+    "batch_size": 256,
+    "epochs": 25,
+    "final_evaluation": false,
+    "model": {
+      "activation": "relu",
+      "dropout": 0.2,
+      "hidden_dims": [
+        256,
+        128,
+        64
+      ],
+      "use_batch_norm": true
+    },
+    "optimizer": {
+      "learning_rate": 0.001,
+      "name": "adam",
+      "weight_decay": 0.0
+    },
+    "patience": 5,
+    "run_name": "tune_thr045_02",
+    "seed": 42,
+    "threshold": 0.45
+  },
+  "device": "cuda",
+  "duration_seconds": 57.58,
+  "epochs_completed": 9,
+  "input_dim": 90,
+  "leaderboard_rank": 4,
+  "parameter_count": 65409,
+  "run_dir": "artifacts/runs/tune_thr045_02",
+  "run_name": "tune_thr045_02",
+  "summary_text": "Best validation loss was 0.5751 with validation F1 0.6637 at epoch 4. Test evaluation was skipped for this run.",
+  "test_metrics": null
+}

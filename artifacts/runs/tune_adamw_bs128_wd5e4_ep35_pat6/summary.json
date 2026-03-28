@@ -1,0 +1,60 @@
+{
+  "best_epoch": 9,
+  "best_train_metrics": {
+    "accuracy": 0.8136620501859281,
+    "f1": 0.6931237342077347,
+    "fn": 990.0,
+    "fp": 5374.0,
+    "loss": 0.5491097423547435,
+    "precision": 0.5721678210333572,
+    "recall": 0.8789287024581143,
+    "tn": 20602.0,
+    "tp": 7187.0
+  },
+  "best_val_metrics": {
+    "accuracy": 0.8015986882557902,
+    "f1": 0.6753856472166332,
+    "fn": 161.0,
+    "fp": 807.0,
+    "loss": 0.5733390184767204,
+    "precision": 0.5551267916207276,
+    "recall": 0.8621575342465754,
+    "tn": 2904.0,
+    "tp": 1007.0
+  },
+  "config": {
+    "artifact_root": "artifacts",
+    "batch_size": 128,
+    "epochs": 35,
+    "final_evaluation": false,
+    "model": {
+      "activation": "relu",
+      "dropout": 0.2,
+      "hidden_dims": [
+        256,
+        128,
+        64
+      ],
+      "use_batch_norm": true
+    },
+    "optimizer": {
+      "learning_rate": 0.0005,
+      "name": "adamw",
+      "weight_decay": 0.0005
+    },
+    "patience": 6,
+    "run_name": "tune_adamw_bs128_wd5e4_ep35_pat6",
+    "seed": 42,
+    "threshold": 0.5
+  },
+  "device": "cuda",
+  "duration_seconds": 71.87,
+  "epochs_completed": 15,
+  "input_dim": 90,
+  "leaderboard_rank": 1,
+  "parameter_count": 65409,
+  "run_dir": "artifacts/runs/tune_adamw_bs128_wd5e4_ep35_pat6",
+  "run_name": "tune_adamw_bs128_wd5e4_ep35_pat6",
+  "summary_text": "Best validation loss was 0.5733 with validation F1 0.6754 at epoch 9. Test evaluation was skipped for this run.",
+  "test_metrics": null
+}

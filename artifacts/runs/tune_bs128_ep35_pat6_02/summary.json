@@ -1,0 +1,60 @@
+{
+  "best_epoch": 9,
+  "best_train_metrics": {
+    "accuracy": 0.8130178900828624,
+    "f1": 0.6920034725571526,
+    "fn": 1003.0,
+    "fp": 5383.0,
+    "loss": 0.5470895775170137,
+    "precision": 0.5713148044915187,
+    "recall": 0.8773388773388774,
+    "tn": 20593.0,
+    "tp": 7174.0
+  },
+  "best_val_metrics": {
+    "accuracy": 0.8022135683541709,
+    "f1": 0.673876309564042,
+    "fn": 171.0,
+    "fp": 794.0,
+    "loss": 0.5758169604803993,
+    "precision": 0.5566722501395869,
+    "recall": 0.853595890410959,
+    "tn": 2917.0,
+    "tp": 997.0
+  },
+  "config": {
+    "artifact_root": "artifacts",
+    "batch_size": 128,
+    "epochs": 35,
+    "final_evaluation": false,
+    "model": {
+      "activation": "relu",
+      "dropout": 0.2,
+      "hidden_dims": [
+        256,
+        128,
+        64
+      ],
+      "use_batch_norm": true
+    },
+    "optimizer": {
+      "learning_rate": 0.001,
+      "name": "adam",
+      "weight_decay": 0.0
+    },
+    "patience": 6,
+    "run_name": "tune_bs128_ep35_pat6_02",
+    "seed": 42,
+    "threshold": 0.5
+  },
+  "device": "cuda",
+  "duration_seconds": 89.9,
+  "epochs_completed": 15,
+  "input_dim": 90,
+  "leaderboard_rank": 2,
+  "parameter_count": 65409,
+  "run_dir": "artifacts/runs/tune_bs128_ep35_pat6_02",
+  "run_name": "tune_bs128_ep35_pat6_02",
+  "summary_text": "Best validation loss was 0.5758 with validation F1 0.6739 at epoch 9. Test evaluation was skipped for this run.",
+  "test_metrics": null
+}

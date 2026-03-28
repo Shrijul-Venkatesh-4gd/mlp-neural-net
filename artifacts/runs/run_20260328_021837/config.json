@@ -1,0 +1,25 @@
+{
+  "artifact_root": "artifacts",
+  "batch_size": 256,
+  "epochs": 25,
+  "final_evaluation": false,
+  "model": {
+    "activation": "relu",
+    "dropout": 0.2,
+    "hidden_dims": [
+      256,
+      128,
+      64
+    ],
+    "use_batch_norm": true
+  },
+  "optimizer": {
+    "learning_rate": 0.001,
+    "name": "adam",
+    "weight_decay": 0.0
+  },
+  "patience": 5,
+  "run_name": "run_20260328_021837",
+  "seed": 42,
+  "threshold": 0.5
+}

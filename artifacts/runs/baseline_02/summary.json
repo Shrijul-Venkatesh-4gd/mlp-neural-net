@@ -1,0 +1,70 @@
+{
+  "best_epoch": 4,
+  "best_train_metrics": {
+    "accuracy": 0.8056393289022926,
+    "f1": 0.6817833173537873,
+    "fn": 1066.0,
+    "fp": 5572.0,
+    "loss": 0.5706401710572663,
+    "precision": 0.5606717653551999,
+    "recall": 0.8696343402225755,
+    "tn": 20404.0,
+    "tp": 7111.0
+  },
+  "best_val_metrics": {
+    "accuracy": 0.7985242877638861,
+    "f1": 0.6717863105175291,
+    "fn": 162.0,
+    "fp": 821.0,
+    "loss": 0.5751234500421366,
+    "precision": 0.5506294471811713,
+    "recall": 0.8613013698630136,
+    "tn": 2890.0,
+    "tp": 1006.0
+  },
+  "config": {
+    "artifact_root": "artifacts",
+    "batch_size": 256,
+    "epochs": 25,
+    "final_evaluation": true,
+    "model": {
+      "activation": "relu",
+      "dropout": 0.2,
+      "hidden_dims": [
+        256,
+        128,
+        64
+      ],
+      "use_batch_norm": true
+    },
+    "optimizer": {
+      "learning_rate": 0.001,
+      "name": "adam",
+      "weight_decay": 0.0
+    },
+    "patience": 5,
+    "run_name": "baseline_02",
+    "seed": 42,
+    "threshold": 0.5
+  },
+  "device": "cuda",
+  "duration_seconds": 30.49,
+  "epochs_completed": 9,
+  "input_dim": 90,
+  "leaderboard_rank": 2,
+  "parameter_count": 65409,
+  "run_dir": "artifacts/runs/baseline_02",
+  "run_name": "baseline_02",
+  "summary_text": "Best validation loss was 0.5751 with validation F1 0.6718 at epoch 4. Final test loss was 0.5621 with test F1 0.6762.",
+  "test_metrics": {
+    "accuracy": 0.8000614880098381,
+    "f1": 0.6761825726141079,
+    "fn": 299.0,
+    "fp": 1652.0,
+    "loss": 0.5620591087061794,
+    "precision": 0.5521821631878557,
+    "recall": 0.8720034246575342,
+    "tn": 5770.0,
+    "tp": 2037.0
+  }
+}

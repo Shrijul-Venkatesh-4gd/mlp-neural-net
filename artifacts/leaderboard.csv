@@ -1,0 +1,14 @@
+rank,run_name,best_val_f1,best_val_loss,best_epoch,epochs_completed,optimizer,learning_rate,weight_decay,hidden_dims,activation,dropout,threshold,seed,final_evaluation,test_f1,test_loss,run_dir
+1,tune_adamw_bs128_wd5e4_ep35_pat6_seed7,0.6837039495519417,0.5541113787106399,8,14,adamw,0.0005,0.0005,256-128-64,relu,0.2,0.52,7,False,,,artifacts/runs/tune_adamw_bs128_wd5e4_ep35_pat6_seed7
+2,tune_adamw_bs128_wd5e4_ep35_pat6_thr052,0.6762197202320028,0.5733390184767204,9,15,adamw,0.0005,0.0005,256-128-64,relu,0.2,0.52,42,False,,,artifacts/runs/tune_adamw_bs128_wd5e4_ep35_pat6_thr052
+3,tune_adamw_bs128_wd5e4_ep35_pat6,0.6753856472166332,0.5733390184767204,9,15,adamw,0.0005,0.0005,256-128-64,relu,0.2,0.5,42,False,,,artifacts/runs/tune_adamw_bs128_wd5e4_ep35_pat6
+4,tune_adamw_lr5e4_wd1e4_02,0.6741721854304635,0.5730684570025948,9,14,adamw,0.0005,0.0001,256-128-64,relu,0.2,0.5,42,False,,,artifacts/runs/tune_adamw_lr5e4_wd1e4_02
+5,tune_bs128_ep35_pat6_02,0.673876309564042,0.5758169604803993,9,15,adam,0.001,0.0,256-128-64,relu,0.2,0.5,42,False,,,artifacts/runs/tune_bs128_ep35_pat6_02
+6,tune_adamw_wd5e4,0.6732935719019219,0.5709996738255965,9,14,adamw,0.0005,0.0005,256-128-64,relu,0.2,0.5,42,False,,,artifacts/runs/tune_adamw_wd5e4
+7,tune_adamw_lr3e4_wd1e4,0.6726368159203979,0.575034603962133,9,14,adamw,0.0003,0.0001,256-128-64,relu,0.2,0.5,42,False,,,artifacts/runs/tune_adamw_lr3e4_wd1e4
+8,tune_adamw_thr052,0.6724949562878278,0.5730684570025948,9,14,adamw,0.0005,0.0001,256-128-64,relu,0.2,0.52,42,False,,,artifacts/runs/tune_adamw_thr052
+9,tune_adamw_bs128_ep35_pat6,0.6722632639355272,0.5713029125230824,9,15,adamw,0.0005,0.0001,256-128-64,relu,0.2,0.5,42,False,,,artifacts/runs/tune_adamw_bs128_ep35_pat6
+10,tune_adamw_thr048,0.672083197920052,0.5730684570025948,9,14,adamw,0.0005,0.0001,256-128-64,relu,0.2,0.48,42,False,,,artifacts/runs/tune_adamw_thr048
+11,baseline,0.6717863105175291,0.5751234500421366,4,9,adam,0.001,0.0,256-128-64,relu,0.2,0.5,42,True,0.6761825726141079,0.5620591087061794,artifacts/runs/baseline
+12,baseline_02,0.6717863105175291,0.5751234500421366,4,9,adam,0.001,0.0,256-128-64,relu,0.2,0.5,42,True,0.6761825726141079,0.5620591087061794,artifacts/runs/baseline_02
+13,tune_thr045_02,0.6636771300448431,0.5751234500421366,4,9,adam,0.001,0.0,256-128-64,relu,0.2,0.45,42,False,,,artifacts/runs/tune_thr045_02
